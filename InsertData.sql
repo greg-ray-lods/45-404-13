@@ -1,6 +1,17 @@
--- Insert data into the Products table
+-- Create Products table if it doesn't exist
+IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Products' AND schema_id = SCHEMA_ID('dbo'))
+BEGIN
+    CREATE TABLE dbo.Products (
+        ProductID INT IDENTITY(1,1) PRIMARY KEY,
+        ProductName NVARCHAR(100),
+        Price DECIMAL(10, 2),
+        Description NVARCHAR(255),
+        CategoryID INT
+    );
+END;
 
-INSERT INTO Products (ProductName, Price, Description, CategoryID)
+-- Insert data into the Products table
+INSERT INTO dbo.Products (ProductName, Price, Description, CategoryID)
 VALUES
     -- Fruits
     ('Organic Blueberries', 4.99, 'Sweet, antioxidant-rich organic blueberries.', 1),
