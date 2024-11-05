@@ -85,6 +85,33 @@
             "metadata": {
                 "description": "Enables SQL Ledger on the database."
             }
+        },
+        "availabilityZone": {
+            "type": "string",
+            "defaultValue": "NoPreference",
+            "allowedValues": [
+                "NoPreference",
+                "1",
+                "2",
+                "3"
+            ],
+            "metadata": {
+                "description": "Specifies the availability zone for the database. Use 'NoPreference' for no specific zone."
+            }
+        },
+        "useFreeLimit": {
+            "type": "bool",
+            "defaultValue": false,
+            "metadata": {
+                "description": "Use the free limit for eligible services."
+            }
+        },
+        "freeLimitExhaustionBehavior": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Specifies behavior when free limit is exhausted."
+            }
         }
     },
     "resources": [
