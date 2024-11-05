@@ -83,7 +83,7 @@
                 "readScale": "[parameters('readScaleOut')]",
                 "highAvailabilityReplicaCount": "[parameters('numberOfReplicas')]",
                 "minCapacity": "[parameters('minCapacity')]",
-                "autoPauseDelay": "[if(contains(parameters('skuName'), 'GP_S'), parameters('autoPauseDelay'), null)]",
+                "autoPauseDelay": "[if(contains(parameters('skuName'), 'GP_S'), parameters('autoPauseDelay'), json('null'))]",
                 "requestedBackupStorageRedundancy": "[parameters('requestedBackupStorageRedundancy')]",
                 "isLedgerOn": "[parameters('enableSqlLedger')]",
                 "availabilityZone": "[parameters('availabilityZone')]",
