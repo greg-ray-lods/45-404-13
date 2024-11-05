@@ -69,7 +69,7 @@
         },
         "requestedBackupStorageRedundancy": {
             "type": "string",
-            "defaultValue": "Local",
+            "defaultValue": "Geo",
             "allowedValues": [
                 "Local",
                 "Zone",
@@ -77,6 +77,13 @@
             ],
             "metadata": {
                 "description": "Specifies the backup storage redundancy for the database."
+            }
+        },
+        "enableSqlLedger": {
+            "type": "bool",
+            "defaultValue": false,
+            "metadata": {
+                "description": "Enables SQL Ledger on the database."
             }
         }
     },
