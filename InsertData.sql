@@ -1,3 +1,6 @@
+
+USE DB01;
+
 -- Create Products table if it doesn't exist
 IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Products' AND schema_id = SCHEMA_ID('dbo'))
 BEGIN
