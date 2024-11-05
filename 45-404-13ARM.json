@@ -46,7 +46,7 @@
         },
         "autoPauseDelay": {
             "type": "int",
-            "defaultValue": 60, // Setting to a non-zero value for compatibility
+            "defaultValue": 60,
             "metadata": {
                 "description": "Specify the auto-pause delay in minutes for serverless tiers. Set to 0 to disable auto-pause if supported."
             }
@@ -67,7 +67,6 @@
             "type": "bool",
             "defaultValue": false
         }
-        // Other parameters remain unchanged
     },
     "resources": [
         {
@@ -84,7 +83,6 @@
                 "readScale": "[parameters('readScaleOut')]",
                 "highAvailabilityReplicaCount": "[parameters('numberOfReplicas')]",
                 "minCapacity": "[parameters('minCapacity')]",
-                // Add conditional application for autoPauseDelay only for serverless tiers
                 "autoPauseDelay": "[if(contains(parameters('skuName'), 'GP_S'), parameters('autoPauseDelay'), null)]",
                 "requestedBackupStorageRedundancy": "[parameters('requestedBackupStorageRedundancy')]",
                 "isLedgerOn": "[parameters('enableSqlLedger')]",
