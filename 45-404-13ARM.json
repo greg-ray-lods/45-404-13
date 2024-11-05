@@ -66,6 +66,18 @@
         "useVAManagedIdentity": {
             "type": "bool",
             "defaultValue": false
+        },
+        "requestedBackupStorageRedundancy": {
+            "type": "string",
+            "defaultValue": "Local",
+            "allowedValues": [
+                "Local",
+                "Zone",
+                "Geo"
+            ],
+            "metadata": {
+                "description": "Specifies the backup storage redundancy for the database."
+            }
         }
     },
     "resources": [
