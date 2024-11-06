@@ -60,12 +60,13 @@
           "type": "databases",
           "apiVersion": "2022-02-01-preview",
           "name": "[parameters('sqlDatabaseName')]",
-          "location": "[parameters('location')]",
           "sku": {
             "name": "[parameters('sqlDatabaseSku')]"
           },
+          "location": "[parameters('location')]",  // Add location in the nested SQL Database resource
           "properties": {
-            "collation": "SQL_Latin1_General_CP1_CI_AS"
+            "collation": "SQL_Latin1_General_CP1_CI_AS",
+            "location": "[parameters('location')]" // Add location within properties as well for SQL database
           },
           "dependsOn": [
             "[resourceId('Microsoft.Sql/servers', variables('sqlServerName'))]"
