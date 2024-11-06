@@ -89,13 +89,13 @@
         {
           "type": "Microsoft.Storage/storageAccounts/blobServices",
           "apiVersion": "2022-09-01",
-          "name": "default",
+          "name": "[concat(variables('storageAccountName'), '/default')]",
           "properties": {},
           "resources": [
             {
               "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
               "apiVersion": "2022-09-01",
-              "name": "backup",
+              "name": "[concat(variables('storageAccountName'), '/default/backup')]",
               "properties": {
                 "publicAccess": "Blob"
               },
