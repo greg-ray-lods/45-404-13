@@ -3,28 +3,28 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "sqlServerName": {
-      "value": "YourSQLServerName"
+      "value": "sa@lab.LabInstance.Id"
     },
     "location": {
       "value": "East US"
     },
     "sqlAdminUser": {
-      "value": "YourSQLAdminUser"
+      "value": "azureadmin"
     },
     "sqlAdminPassword": {
-      "value": "YourPassword"
+      "value": "QWERTYUIOPqwertyuiop1"
     },
     "sqlDatabaseName": {
-      "value": "YourDatabaseName"
+      "value": "DB01"
     },
     "sqlDatabaseSku": {
       "value": "S1"
     },
     "storageAccountName": {
-      "value": "yourstorageacctname"
+      "value": "sa@lab.LabInstance.Id"
     },
     "keyVaultName": {
-      "value": "yourkeyvaultname"
+      "value": "kv@lab.LabInstance.Id"
     },
     "userObjectId": {
       "value": ""  // This will be dynamically fetched and populated
