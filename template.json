@@ -87,7 +87,7 @@
       },
       "resources": [
         {
-          "type": "Microsoft.Storage/storageAccounts/blobServices",
+          "type": "blobServices",
           "apiVersion": "2022-09-01",
           "name": "default",
           "properties": {},
@@ -96,7 +96,7 @@
           ],
           "resources": [
             {
-              "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+              "type": "containers",
               "apiVersion": "2022-09-01",
               "name": "backup",
               "properties": {
