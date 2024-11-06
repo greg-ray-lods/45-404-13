@@ -2,12 +2,6 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "sqlServerName": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the SQL Server."
-      }
-    },
     "location": {
       "type": "string",
       "defaultValue": "East US",
@@ -40,18 +34,6 @@
         "description": "SKU for the SQL Database."
       }
     },
-    "storageAccountName": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the storage account."
-      }
-    },
-    "keyVaultName": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the Key Vault."
-      }
-    },
     "userObjectId": {
       "type": "string",
       "metadata": {
@@ -59,11 +41,16 @@
       }
     }
   },
+  "variables": {
+    "sqlServerName": "[concat('sql', uniqueString(resourceGroup().id))]",
+    "storageAccountName": "[concat('sa', uniqueString(resourceGroup().id))]",
+    "keyVaultName": "[concat('kv', uniqueString(resourceGroup().id))]"
+  },
   "resources": [
     {
       "type": "Microsoft.Sql/servers",
       "apiVersion": "2022-02-01-preview",
-      "name": "[parameters('sqlServerName')]",
+      "name": "[variables('sqlServerName')]",
       "location": "[parameters('location')]",
       "properties": {
         "administratorLogin": "[parameters('sqlAdminUser')]",
@@ -81,7 +68,7 @@
             "collation": "SQL_Latin1_General_CP1_CI_AS"
           },
           "dependsOn": [
-            "[resourceId('Microsoft.Sql/servers', parameters('sqlServerName'))]"
+            "[resourceId('Microsoft.Sql/servers', variables('sqlServerName'))]"
           ]
         }
       ]
@@ -89,7 +76,7 @@
     {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2022-09-01",
-      "name": "[parameters('storageAccountName')]",
+      "name": "[variables('storageAccountName')]",
       "location": "[parameters('location')]",
       "sku": {
         "name": "Standard_LRS"
@@ -107,7 +94,7 @@
             "publicAccess": "Blob"
           },
           "dependsOn": [
-            "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
           ]
         }
       ]
@@ -115,7 +102,7 @@
     {
       "type": "Microsoft.KeyVault/vaults",
       "apiVersion": "2022-07-01",
-      "name": "[parameters('keyVaultName')]",
+      "name": "[variables('keyVaultName')]",
       "location": "[parameters('location')]",
       "properties": {
         "sku": {
@@ -138,7 +125,7 @@
   "outputs": {
     "sqlConnectionString": {
       "type": "string",
-      "value": "[concat('Server=tcp:', parameters('sqlServerName'), '.database.windows.net,1433;Initial Catalog=', parameters('sqlDatabaseName'), ';Persist Security Info=False;User ID=', parameters('sqlAdminUser'), ';Password=', parameters('sqlAdminPassword'), ';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;')]"
+      "value": "[concat('Server=tcp:', variables('sqlServerName'), '.database.windows.net,1433;Initial Catalog=', parameters('sqlDatabaseName'), ';Persist Security Info=False;User ID=', parameters('sqlAdminUser'), ';Password=', parameters('sqlAdminPassword'), ';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;')]"
     }
   }
 }
