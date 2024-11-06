@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "sqlServerName": {
-      "value": "sa@lab.LabInstance.Id"
+      "value": ""
     },
     "location": {
       "value": "East US"
@@ -21,10 +21,10 @@
       "value": "S1"
     },
     "storageAccountName": {
-      "value": "sa@lab.LabInstance.Id"
+      "value": ""
     },
     "keyVaultName": {
-      "value": "kv@lab.LabInstance.Id"
+      "value": ""
     },
     "userObjectId": {
       "value": ""  // This will be dynamically fetched and populated
