@@ -90,13 +90,10 @@
           "type": "Microsoft.Storage/storageAccounts/blobServices",
           "apiVersion": "2022-09-01",
           "name": "default",
-          "dependsOn": [
-            "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
-          ],
           "properties": {},
           "resources": [
             {
-              "type": "containers",
+              "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
               "apiVersion": "2022-09-01",
               "name": "backup",
               "properties": {
